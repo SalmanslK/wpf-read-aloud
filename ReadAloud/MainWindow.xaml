@@ -1,0 +1,36 @@
+<Window x:Class="ReadAloud.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Read Aloud" Height="560" Width="860" MinHeight="320" MinWidth="560">
+    <DockPanel Margin="12">
+        <!-- Source: type or paste text, or load pages from a PDF -->
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,8">
+            <Button x:Name="OpenPdfButton" Content="Open PDF…" Padding="12,4" Click="OpenPdf_Click" />
+            <TextBlock Text="Pages" VerticalAlignment="Center" Margin="16,0,6,0" />
+            <TextBox x:Name="FromPageBox" Width="48" Text="1" VerticalContentAlignment="Center" />
+            <TextBlock Text="to" VerticalAlignment="Center" Margin="6,0" />
+            <TextBox x:Name="ToPageBox" Width="48" Text="1" VerticalContentAlignment="Center" />
+            <TextBlock x:Name="PageCountText" VerticalAlignment="Center" Margin="6,0" Foreground="Gray" />
+            <Button x:Name="LoadPagesButton" Content="Load pages" Padding="12,4" Click="LoadPages_Click" />
+        </StackPanel>
+
+        <!-- Playback -->
+        <DockPanel DockPanel.Dock="Bottom" Margin="0,8,0,0" LastChildFill="False">
+            <Button x:Name="SpeakButton" Content="Speak" Width="80" Padding="0,4" Click="Speak_Click" />
+            <Button x:Name="PauseButton" Content="Pause" Width="80" Margin="8,0,0,0" Click="Pause_Click" />
+            <Button x:Name="ResumeButton" Content="Resume" Width="80" Margin="8,0,0,0" Click="Resume_Click" />
+            <Button x:Name="StopButton" Content="Stop" Width="80" Margin="8,0,0,0" Click="Stop_Click" />
+            <TextBlock x:Name="StatusText" VerticalAlignment="Center" Margin="16,0,0,0" Foreground="Gray" />
+
+            <Slider x:Name="RateSlider" DockPanel.Dock="Right" Width="120" Minimum="-10" Maximum="10" Value="0"
+                    TickFrequency="1" IsSnapToTickEnabled="True" VerticalAlignment="Center" />
+            <TextBlock DockPanel.Dock="Right" Text="Speed" VerticalAlignment="Center" Margin="16,0,6,0" />
+            <ComboBox x:Name="VoiceBox" DockPanel.Dock="Right" Width="200" VerticalAlignment="Center" />
+            <TextBlock DockPanel.Dock="Right" Text="Voice" VerticalAlignment="Center" Margin="0,0,6,0" />
+        </DockPanel>
+
+        <TextBox x:Name="ReadingText" AcceptsReturn="True" TextWrapping="Wrap" FontSize="15" Padding="6"
+                 VerticalScrollBarVisibility="Auto" IsInactiveSelectionHighlightEnabled="True"
+                 TextChanged="ReadingText_TextChanged" />
+    </DockPanel>
+</Window>
